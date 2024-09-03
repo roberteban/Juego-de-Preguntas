@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responde Rápido</title>
+    <link rel="stylesheet" href="misEstilos.css">
+    <script>
+        let tiempoTerminado; // Variable para el temporizador de fin de juego
+        let intervaloDeTiempo; // Variable para el intervalo de cuenta regresiva
+
+        // Función para iniciar la cuenta regresiva al cargar la página
+        function comenzarCuentaRegresiva() {
+            tiempoTerminado = setTimeout(tiempoCumplido, 60000); // Configura un temporizador de 60 segundos (1 minuto)
+            intervaloDeTiempo = setInterval(ticTac, 1000); // Actualiza el temporizador cada segundo
+
+            document.getElementById("cuentaRegresiva").textContent = 60; // Muestra 60 segundos inicialmente
+        }
+
+        // Función que ejecuta cada segundo para reducir el contador
+        function ticTac() {
+            let tiempo = document.getElementById("cuentaRegresiva").textContent; // Obtiene el tiempo restante
+            if (tiempo > 0) {
+                document.getElementById("cuentaRegresiva").textContent = tiempo - 1; // Reduce el tiempo en 1 segundo
+            }
+        }
+
+        // Función que se llama cuando se acaba el tiempo
+        function tiempoCumplido() {
+            clearInterval(intervaloDeTiempo); // Detiene la actualización del temporizador
+            document.getElementById("cuentaRegresiva").textContent = 0; // Establece el tiempo en 0
+            document.getElementById("audioFinal").play(); // Reproduce el audio de "Game Over"
+            alert("Game over: Se acabó el tiempo. Intenta nuevamente");
+        }
+
+        // Función que se ejecuta cuando el jugador presiona el botón "Terminé!"
+        function finalizado() {
+            clearTimeout(tiempoTerminado); // Detiene el temporizador de fin de juego
+            clearInterval(intervaloDeTiempo); // Detiene la actualización del contador
+
+            let fecha = new Date(); // Obtiene la fecha actual
+
+            // Obtiene las respuestas del jugador
+            let respuesta1 = document.getElementById("respuesta1").value.trim().toLowerCase();
+            let respuesta2 = document.getElementById("respuesta2").value.trim().toLowerCase();          
+            let respuesta3 = document.getElementById("respuesta3").value.trim().toUpperCase();
+            let respuesta4 = document.getElementById("respuesta4").value.trim();
+            let respuesta5 = document.getElementById("respuesta5").value.trim().toLowerCase();
+
+            // Respuestas correctas
+            let correctas = [
+                "rusia", 
+                "madrid", 
+                "AU", 
+                "manzana", 
+                "elefante"
+            ];
+
+            // Verificación de respuestas
+            let aciertos = 0;
+            if (respuesta1 === correctas[0]) aciertos++;
+            if (respuesta2 === correctas[1]) aciertos++;
+            if (respuesta3 === correctas[2]) aciertos++;
+            if (respuesta4 === correctas[3]) aciertos++;
+            if (respuesta5 === correctas[4]) aciertos++;
+
+            // Crea un mensaje con las respuestas y la fecha
+            let mensaje = fecha.toDateString("es-ES") + "\n" +
+                          "1. " + respuesta1 + "\n" + 
+                          "2. " + respuesta2 + "\n" + 
+                          "3. " + respuesta3 + "\n" + 
+                          "4. " + respuesta4 + "\n" + 
+                          "5. " + respuesta5 + "\n" + 
+                          "Respuestas correctas: " + aciertos + "/5";
+
+            // Mostrar mensaje de resultado
+            if (aciertos === 5) {
+                alert("¡Felicidades! Todas las respuestas son correctas.\n" + mensaje);
+            } else {
+                alert("Juego finalizado. Aquí están tus respuestas:\n" + mensaje);
+            }
+        }
+
+        // Función para recargar la página y reiniciar el juego
+        function volverAIntertar() {
+            location.reload(); // Recarga la página actual
+        }
+    </script>
+</head>
+<body onload="comenzarCuentaRegresiva()">
+    <h2>Responde a las preguntas lo más rápido que puedas <span id="cuentaRegresiva"></span></h2>
+    <p>1. ¿Cuál es el país más grande del mundo por superficie?</p>
+    <input type="text" id="respuesta1">
+    <p>2. ¿Cuál es la capital de España?</p>
+    <input type="text" id="respuesta2">
+    <p>3. ¿Cuál es el símbolo químico del oro?</p>
+    <input type="text" id="respuesta3">
+    <p>4. ¿Cuál es la fruta que da nombre a la tecnología de Apple?</p>
+    <input type="text" id="respuesta4">
+    <p>5. ¿Qué animal es conocido por tener una trompa larga?</p>
+    <input type="text" id="respuesta5">
+    <br><br>
+    <!-- Botón Finalizar que llama a la función finalizado -->
+    <button onclick="finalizado()">Terminé!</button>
+    <br><br>
+    <!-- Botón Volver a Intentar que recarga la página -->
+    <button onclick="volverAIntertar()">Volver a Intentar</button>
+    
+    <audio id="audioFinal">
+        <source src="gameover.mp3" type="audio/mpeg">
+        Sonido no habilitado
+    </audio>
+</body>
+</html>

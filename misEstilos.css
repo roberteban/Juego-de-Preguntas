@@ -1,0 +1,47 @@
+html {
+    font-family: 'Poppins', 'Roboto', sans-serif; /* Fuentes modernas */
+}
+
+button {
+    width: 200px;
+    height: 50px;
+    background-color: #4A90E2; /* Azul moderno */
+    color: white; /* Texto blanco para contraste */
+    border: none; /* Sin borde para un estilo más limpio */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: background-color 0.3s ease; /* Animación en hover */
+}
+
+button:hover {
+    background-color: #357ABD; /* Cambio de color al pasar el cursor */
+}
+
+h2 {
+    color: #333; /* Gris oscuro moderno */
+    font-size: 1.8rem; /* Tamaño de fuente adaptado */
+}
+
+p {
+    font-weight: 400; /* Peso de fuente normal */
+    font-style: normal; /* Sin cursiva */
+    color: #555; /* Gris para un aspecto más suave */
+}
+
+input {
+    width: 220px; /* Más ancho para mejor usabilidad */
+    height: 40px;
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px 10px; /* Espaciado interno */
+    font-size: 1rem; /* Tamaño de fuente más legible */
+}
+
+#cuentaRegresiva {
+    border: 2px solid #FF6B6B; /* Borde rojo moderno */
+    color: #FF6B6B; /* Rojo más vibrante */
+    padding: 5px;
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto destacado */
+    background-color: #FFF5F5; /* Fondo suave para contraste */
+}
