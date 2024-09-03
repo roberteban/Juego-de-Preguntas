@@ -1,4 +1,3 @@
-Responde Rápido
 Responde Rápido es un juego interactivo desarrollado con HTML, CSS y JavaScript. Pon a prueba tus conocimientos con preguntas de interés general mientras te enfrentas a una cuenta regresiva de 1 minuto. Al final, podrás ver un resumen de tus respuestas y saber cuántas has acertado. ¡Si te quedas sin tiempo, no te preocupes! Podrás intentarlo nuevamente.
 
 🎯 Descripción
